@@ -41,8 +41,9 @@ int main(void){
             fprintf(ptr_file,"%d",ramdon);
        
         cont++; 
-            delay(4000); 
+            
         fclose(ptr_file); 
+            delay(5000); 
         }
 
     return 0;
