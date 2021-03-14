@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>TxtToWeb</title>
+</head>
+<body>
+    <main class="container">
+        <article class="card">
+            <img src="images/bg-pattern-card.svg" alt="top picture" class="card-topimg">
+            <div class="card-main">
+                <h1>Temperatura:</h1>
+                <span id="text" class="card-main-text"></span>
+                <span class="c">°</span>
+            </div>
+            <div class="card-info">
+                <div class="card-info-user">
+                    <h3>Usuario:</h3>
+                    <p>Juanito Alimaña</p>
+                </div>
+
+                <div class="card-info-city">
+                    <h3>Ciudad:</h3>
+                    <p>Santa Marta</p>
+                </div>
+                
+            </div>
+        </article>
+    </main>
+    <script>
+      window.setInterval(function(){
+            var text_print = new XMLHttpRequest();
+            text_print.open("GET", "http://localhost/TxtToWeb/log.txt", true);
+            text_print.send();
+            text_print.onreadystatechange = function () {
+                if (text_print.readyState == 4) {
+                    if(text_print.status == 200) {
+                        document.getElementById("text").innerHTML=text_print.responseText;
+                    }
+                }
+            }
+        }, 5000);
+    </script>
+</body>
+</html>
